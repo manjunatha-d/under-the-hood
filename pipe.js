@@ -14,7 +14,7 @@ function pipe(...fns) {
     };
   }
 
-  return pip(fns[0], pipe(fns));
+  return pipe(fns[0], pipe(fns));
 }
 
 /**
