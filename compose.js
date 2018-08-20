@@ -1,17 +1,12 @@
 /**
  * compose functions from right to left
  */
-function compose(...fns) {
-  // Sanity check
-  if (fns.length < 2) {
-    return fns[0];
-  }
 
+// Recursive solution
+function compose(...fns) {
   // Base case
   if (fns.length === 2) {
-    return function(...args) {
-      return fns[0](fns[1](...args));
-    };
+    return (...args) => fns[0](fns[1](...args));
   }
 
   return compose(
@@ -26,13 +21,8 @@ function compose(...fns) {
  * Test compose()
  */
 
-function add(a, b) {
-  return a + b;
-}
-
-function square(a) {
-  return a ** 2;
-}
+const add = (a, b) => a + b;
+const square = a => a * a;
 
 const addNSqr = compose(
   square,
